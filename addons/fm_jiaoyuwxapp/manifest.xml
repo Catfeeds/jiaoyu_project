@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns="http://www.we7.cc" versionCode="">
+	<application setting="false">
+		<name><![CDATA[微教育小程序]]></name>
+		<identifie><![CDATA[fm_jiaoyuwxapp]]></identifie>
+		<version><![CDATA[2.42.6]]></version>
+		<type><![CDATA[biz]]></type>
+		<ability><![CDATA[微教育小程序版，适用幼、小、初、高、院校及培训机构的教育管理程序]]></ability>
+		<description><![CDATA[微教育小程序版，适用幼、小、初、高、院校及培训机构的教育管理程序]]></description>
+		<author><![CDATA[微擎小源码之家]]></author>
+        <url><![CDATA[https://shop108122497.taobao.com/]]></url>
+	</application>
+	<platform>
+		<subscribes>
+		</subscribes>
+		<handles>
+		</handles>
+		<rule embed="false" />
+		<card embed="false" />
+		<supports>
+			<item type="wxapp"/>
+		</supports>
+	</platform>
+	<bindings>
+		<cover>
+		</cover>
+		<menu>
+			<entry title="基础设置 " direct="false" state="" do="basics"/>
+			<entry title="启动设置 " direct="false" state="" do="startpage"/>
+		</menu>
+		<home>
+		</home>
+	</bindings>
+	<permissions>
+	</permissions>
+	<install><![CDATA[
+DROP TABLE IF EXISTS `ims_wx_school_formid`;
+CREATE TABLE `ims_wx_school_formid` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `weid` int(10) unsigned NOT NULL,
+  `fromto` varchar(100) NOT NULL COMMENT '点击来源',
+  `formid` varchar(500) NOT NULL COMMENT 'formid',
+  `openid` varchar(500) NOT NULL COMMENT 'openid',
+  `creattime` int(10) NOT NULL COMMENT '时间',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `ims_wx_school_hothit`;
+CREATE TABLE `ims_wx_school_hothit` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `weid` int(10) unsigned NOT NULL,
+  `btnid` int(10) unsigned NOT NULL,
+  `formid_use` int(10) unsigned NOT NULL,
+  `fromto` varchar(100) NOT NULL COMMENT '点击来源',
+  `openid` varchar(500) NOT NULL COMMENT 'openid',
+  `creattime` int(10) NOT NULL COMMENT '时间',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `ims_wx_school_wxappset`;
+CREATE TABLE `ims_wx_school_wxappset` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `weid` int(10) unsigned NOT NULL,
+  `schoolid` int(10) unsigned NOT NULL COMMENT '学校ID',
+  `fromweid` int(10) unsigned NOT NULL COMMENT '所属公众号',
+  `headtitle` varchar(50) NOT NULL COMMENT '顶部标题',
+  `headcolor` varchar(10) NOT NULL COMMENT '顶部背景颜色',
+  `headfont` varchar(10) NOT NULL COMMENT '顶部字体颜色',
+  `imgname` varchar(50) NOT NULL COMMENT '图标名',
+  `loginimg` varchar(1000) NOT NULL COMMENT '图标地址',
+  `imgfontcolor` varchar(10) NOT NULL COMMENT '图标名颜色',
+  `btnname` varchar(50) NOT NULL COMMENT '按钮名',
+  `btncolor` varchar(1000) NOT NULL COMMENT '按钮框颜色',
+  `btnfontcolor` varchar(10) NOT NULL COMMENT '按钮名字体颜色',
+  `copyright` varchar(1000) NOT NULL COMMENT '版权',
+  `copyrightfontcolor` varchar(10) NOT NULL COMMENT '版权字体颜色',
+  `loginbgcolor` varchar(10) NOT NULL COMMENT '背景颜色',
+  `loginbgimg` varchar(1000) NOT NULL COMMENT '背景图片',
+  `bgtype` int(1) NOT NULL COMMENT '背景模式',
+  `show_list` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+]]></install>
+	<uninstall><![CDATA[DROP TABLE IF EXISTS `ims_wx_school_wxappset`;
+]]></uninstall>
+	<upgrade><![CDATA[]]></upgrade>
+</manifest>
